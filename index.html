@@ -11,13 +11,29 @@
 </head>
 
 <body>
-    <div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <div ng-app="myapp" ng-controller="myCtrl">
         <center>
+            <figure class="block image is-128x128">
+                <img class="is-rounded"
+                    src="https://avatars.githubusercontent.com/u/52403567?s=400&u=ae4ad68517bd98e2a20676dae07ad06ecefa5d79&v=4">
+            </figure>
             <h1 class="block title is-1">Hello! This is Jack</h1>
             <h2 class="block">Please click this button to continue...</h2>
-            <button class="block button is-success is-rounded">CLICK ME</button>
+            <a href="/thanks.html"><button class="block button is-success is-rounded">CLICK ME</button></a>
         </center>
     </div>
+
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.clicked = function (id, name, url) {
+
+            }
+        })
+
+    </script>
 </body>
 
 </html>
