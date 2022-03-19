@@ -1,0 +1,16 @@
+body {
+	background-color: white;
+	color: black;
+}
+
+.dark-mode {
+	background-color: black;
+	color: white;
+}
+.btn-toggle {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+}
