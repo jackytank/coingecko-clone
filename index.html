@@ -41,8 +41,9 @@
         <main class="mt-3">
             <section>
                 <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-                <coingecko-coin-price-marquee-widget coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd"
-                    background-color="#ffffff" locale="en">
+                <coingecko-coin-price-marquee-widget
+                    coin-ids="bitcoin,ethereum,litecoin,near,terra-luna,binancecoin,monero,fantom,solana,matic-network"
+                    currency="usd" background-color="#ffffff" locale="en">
                 </coingecko-coin-price-marquee-widget>
 
                 <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
@@ -115,8 +116,10 @@
                         <h2 class="fw-bolder">Today's Cryptocurrency Prices by Market Cap</h2>
                     </div>
                     <div class="">
-                        <p>The global cryptocurrency market cap today is <span class="fw-bold" id="marketcap2"></span> Trillion, a
-                            <span class="fw-bold" style="color: rgb(23,198,132);" id="mcap_change"></span> change in the last 24
+                        <p>The global cryptocurrency market cap today is <span class="fw-bold" id="marketcap2"></span>
+                            Trillion, a
+                            <span class="fw-bold" style="color: rgb(23,198,132);" id="mcap_change"></span> change in the
+                            last 24
                             hours
                         </p>
                     </div>
@@ -125,22 +128,83 @@
                 <!-- Crypto-table -->
 
                 <div id="crypto-section" class="container-fluid justify-content-center">
-                    <table id="crypto-table" class="table table-hover">
-                        <thead>
-                            <th>Rank</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>1h</th>
-                            <th>24h</th>
-                            <th>7d</th>
-                            <th>Volume(24h)</th>
-                            <th>Market Cap</th>
-                        </thead>
-                        <tbody id="crypto-table-body">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="ranking-tab" data-bs-toggle="tab"
+                                data-bs-target="#ranking" type="button" role="tab" aria-controls="ranking"
+                                aria-selected="true">Ranking</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="defi-tab" data-bs-toggle="tab" data-bs-target="#defi"
+                                type="button" role="tab" aria-controls="defi" aria-selected="false">DeFi</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="dex-tab" data-bs-toggle="tab" data-bs-target="#dex"
+                                type="button" role="tab" aria-controls="dex" aria-selected="false">DEX Coins</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="derivatives-tab1" data-bs-toggle="tab"
+                                data-bs-target="#derivatives1" type="button" role="tab" aria-controls="derivatives1"
+                                aria-selected="false">More comming soon...</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="ranking" role="tabpanel"
+                            aria-labelledby="ranking-tab">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>Rank</th>
+                                    <th>Coin</th>
+                                    <th>Price</th>
+                                    <th>1h</th>
+                                    <th>24h</th>
+                                    <th>7d</th>
+                                    <th>Volume(24h)</th>
+                                    <th>Market Cap</th>
+                                </thead>
+                                <tbody id="ranking-table-body">
 
-                        </tbody>
-                    </table>
-                    <nav id="pagination">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="defi" role="tabpanel" aria-labelledby="defi-tab">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>Rank</th>
+                                    <th>Coin</th>
+                                    <th>Price</th>
+                                    <th>1h</th>
+                                    <th>24h</th>
+                                    <th>7d</th>
+                                    <th>24h Volume</th>
+                                    <th>Market Cap</th>
+                                    <th>Fully Diluted Mkt. Cap</th>
+                                </thead>
+                                <tbody id="defi-table-body">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="dex" role="tabpanel" aria-labelledby="dex-tab">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>Rank</th>
+                                    <th>Coin</th>
+                                    <th>Price</th>
+                                    <th>1h</th>
+                                    <th>24h</th>
+                                    <th>7d</th>
+                                    <th>24h Volume</th>
+                                    <th>Market Cap</th>
+                                    <th>Fully Diluted Mkt. Cap</th>
+                                </thead>
+                                <tbody id="dex-table-body">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- <nav id="pagination">
                         <ul class="pagination justify-content-center">
                             <li class="page-item coin-item">
                                 <a class="page-link arrow-left" href="#!" aria-label="Previous">
@@ -163,7 +227,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> -->
                 </div>
 
 
