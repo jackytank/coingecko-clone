@@ -11,8 +11,8 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"
+        defer></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <!-- Coingeko ticker widget -->
@@ -24,17 +24,20 @@
     <!-- Font Awsome Icon -->
     <script src="https://kit.fontawesome.com/e136359f35.js" crossorigin="anonymous"></script>
     <!-- Custom css -->
-    <link rel="stylesheet" href="./css/custom-bootrap.css">
+    <link rel="stylesheet" href="./css/style.css">
     <!-- Darkmode js -->
-    <script src="./js/darkmode.js"></script>
+    <script src="./js/darkmode.js" defer></script>
     <!-- AngularJS script -->
-    <script src="./js/angularjs-script.js"></script>
+    <script src="./js/angularjs-script.js" defer></script>
     <!-- Coin js -->
     <script src="./js/coin.js" defer></script>
+    <!-- custom js -->
+    <script src="./js/script.js" defer></script>
 </head>
 
 <body ng-app="myapp" ng-controller="myctrl">
     <div class="container">
+
         <!-- include header.html -->
         <div class="" ng-include="'./header.html'"></div>
 
@@ -153,7 +156,7 @@
                             aria-labelledby="ranking-tab">
                             <table class="table table-hover">
                                 <thead>
-                                    <th>Rank</th>
+                                    <th>#</th>
                                     <th>Coin</th>
                                     <th>Price</th>
                                     <th>1h</th>
@@ -161,6 +164,7 @@
                                     <th>7d</th>
                                     <th>Volume(24h)</th>
                                     <th>Market Cap</th>
+                                    <th>Fully Diluted Mkt. Cap</th>
                                 </thead>
                                 <tbody id="ranking-table-body">
 
@@ -170,7 +174,7 @@
                         <div class="tab-pane fade" id="defi" role="tabpanel" aria-labelledby="defi-tab">
                             <table class="table table-hover">
                                 <thead>
-                                    <th>Rank</th>
+                                    <th>#</th>
                                     <th>Coin</th>
                                     <th>Price</th>
                                     <th>1h</th>
@@ -188,7 +192,7 @@
                         <div class="tab-pane fade" id="dex" role="tabpanel" aria-labelledby="dex-tab">
                             <table class="table table-hover">
                                 <thead>
-                                    <th>Rank</th>
+                                    <th>#</th>
                                     <th>Coin</th>
                                     <th>Price</th>
                                     <th>1h</th>
@@ -204,30 +208,30 @@
                             </table>
                         </div>
                     </div>
-                    <!-- <nav id="pagination">
+                    <nav aria-label="Page navigation example"">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item coin-item">
-                                <a class="page-link arrow-left" href="#!" aria-label="Previous">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item coin-item active coin-active"><a class="page-link">1</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">2</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">3</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">4</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">5</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">6</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">7</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">8</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">9</a></li>
-                            <li class="page-item coin-item"><a class="page-link coin-page">10</a></li>
-                            <li class="page-item coin-item">
-                                <a class="page-link arrow-right" href="#!" aria-label="Next">
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item"><a class="page-link" href="#">6</a></li>
+                            <li class="page-item"><a class="page-link" href="#">7</a></li>
+                            <li class="page-item"><a class="page-link" href="#">8</a></li>
+                            <li class="page-item"><a class="page-link" href="#">9</a></li>
+                            <li class="page-item"><a class="page-link" href="#">10</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>
-                    </nav> -->
+                    </nav>
                 </div>
 
 

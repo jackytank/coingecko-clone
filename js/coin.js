@@ -1,5 +1,5 @@
-const getMarketURL = (page) => "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=70&page="
-    + page + "&sparkline=true&price_change_percentage=1h%2C24h%2C7d"
+const getMarketURL = (page) => "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page="
+    + page + "&sparkline=false&price_change_percentage=1h%2C24h%2C7d"
 
 const getDefiCoinsURL = (page) => "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=decentralized-finance-defi&order=market_cap_desc&per_page=70&page="
     + page + "&sparkline=false&price_change_percentage=1h%2C24h%2C7d"
@@ -13,13 +13,13 @@ const getGlobalURL = () => "https://api.coingecko.com/api/v3/global"
 // function to format number to currency(usd) format
 const formatDollar = (number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', }).format(number)
 
-async function getRankingData(url) { fetch(url).then(res => res.json()).then((data) => loadRankingIntoTable(data)).catch(console.error); }
+async function getRankingData(url) { await fetch(url).then(res => res.json()).then((data) => loadRankingIntoTable(data)).catch(console.error); }
 
-async function getGlobalData(url) { fetch(url).then(res => res.json()).then((data) => loadGlobalDataIntoInfoHead(data)).catch(console.error); }
+async function getGlobalData(url) { await fetch(url).then(res => res.json()).then((data) => loadGlobalDataIntoInfoHead(data)).catch(console.error); }
 
-async function getDefiCoinsData(url) { fetch(url).then(res => res.json()).then(data => loadDefiCoinsToTable(data)).catch(console.error) }
+async function getDefiCoinsData(url) { await fetch(url).then(res => res.json()).then(data => loadDefiCoinsToTable(data)).catch(console.error) }
 
-async function getDEXCoinsData(url) { fetch(url).then(res => res.json()).then(data => loadDEXCoinsToTable(data)).catch(console.error) }
+async function getDEXCoinsData(url) { await fetch(url).then(res => res.json()).then(data => loadDEXCoinsToTable(data)).catch(console.error) }
 
 function loadGlobalDataIntoInfoHead(data) {
     let coins = document.querySelector("#coins")
@@ -57,6 +57,7 @@ function loadRankingIntoTable(data) {
     let coinChange7d = []
     let coinVolume24h = []
     let coinMarketCap = []
+    let coinFulldyDiluted = []
 
     for (let i of data) {
         coinRank.push(i.market_cap_rank)
@@ -68,6 +69,7 @@ function loadRankingIntoTable(data) {
         coinChange7d.push(i.price_change_percentage_7d_in_currency)
         coinVolume24h.push(i.total_volume)
         coinMarketCap.push(i.market_cap)
+        coinFulldyDiluted.push(i.fully_diluted_valuation)
     }
 
     for (let i = 0; i < coinName.length; i++) {
@@ -80,6 +82,7 @@ function loadRankingIntoTable(data) {
         html += `<td class=${coinChange7d[i] > 0 ? "text-success" : "text-danger"}>${coinChange7d[i].toFixed(2) + "%"}</td>`
         html += `<td>${formatDollar(coinVolume24h[i])}</td>`
         html += `<td>${formatDollar(coinMarketCap[i])}</td>`
+        html += `<td>${formatDollar(coinFulldyDiluted[i])}</td>`
         html += `</tr>`
     }
     tableBody.innerHTML = html
