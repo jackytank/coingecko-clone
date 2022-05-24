@@ -5,6 +5,7 @@
 * Tools used:
   - Bootstrap 5
   - Coingecko Widget
+  - ZaloSDK (Chatbox Widget)
   - FetchAPI
 * Demo images
 
