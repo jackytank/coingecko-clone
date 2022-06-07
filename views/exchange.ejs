@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid justify-content-center" ng-controller="exchangeCtrl">
+        <div class="text-center my-5">
+            <h2>Top Cryptocurrency Exchanges Ranking</h2>
+            <h2 class="text-success">{{exchangeType}}</h2>
+        </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="spot-tab" data-bs-toggle="tab" data-bs-target="#spot" type="button"
+                    role="tab" aria-controls="spot" aria-selected="true">Spot</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="derivatives-tab" data-bs-toggle="tab" data-bs-target="#derivatives"
+                    type="button" role="tab" aria-controls="derivatives" aria-selected="false">Derivatives</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="spot" role="tabpanel" aria-labelledby="spot-tab">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Rank</th>
+                        <th>Exchange</th>
+                        <th>Trust Score</th>
+                        <th>24h Volume (Normalized)</th>
+                        <th>24h Volume</th>
+                    </thead>
+                    <tbody id="spotEx-table-body">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="derivatives" role="tabpanel" aria-labelledby="derivatives-tab">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Rank</th>
+                        <th>Exchange</th>
+                        <th>24h Open Interest</th>
+                        <th>24h Volume</th>
+                        <th>Perpetual</th>
+                        <th>Futures</th>
+                    </thead>
+                    <tbody id="derivativesEx-table-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

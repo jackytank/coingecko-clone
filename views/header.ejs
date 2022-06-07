@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <!-- information head -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="info-header">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Coins: <span
+                                    class="text-info" id="coins"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Exchanges:
+                                <span class="text-info" id="exchanges"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Marketcap:
+                                <span class="text-info" id="marketcap1"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">24h Vol: <span
+                                    class="text-info" id="volume24h"></span></a>
+                        </li>
+
+                    </ul>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item dropdown dropstart">
+                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                English
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                <li><a class="dropdown-item" href="#">English</a></li>
+                                <li><a class="dropdown-item" href="#">Tiếng Việt</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn-toggle mt-2" onclick="toggleDarkmode()">
+                                <i id="dark-mode-icon" class="fa-regular fa-moon"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom border-top">
+            <div class="container-fluid">
+                <img width="45" src="/img/tricoin-logo.png" alt="">
+                <a class="navbar-brand fw-bold ms-2" href="#">Tritorium</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="cryptocurrencyDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Cryptocurrency
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="cryptocurrencyDropdown">
+                                <li><a class="dropdown-item disabled fw-bold text-black" href="#">Crypto</a></li>
+                                <li><a class="dropdown-item" href="#" onClick="init()">Ranking</a></li>
+                                <li><a class="dropdown-item" href="#" onClick="init()">DeFi Coins</a></li>
+                                <li><a class="dropdown-item" href="#" onClick="init()">DEX Coins</a></li>
+                                <li><a class="dropdown-item disabled fw-bold text-black" href="#">Fiat</a></li>
+                                <li><a class="dropdown-item" href="#" onClick="init()">Ranking</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="exchangesDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Exchanges
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="exchangesDropdown">
+                                <li><a class="dropdown-item" href="#!/exchange/spot" onClick="init()">Spot</a></li>
+                                <li><a class="dropdown-item" href="#!/exchange/derivatives" onClick="init()">Derivatives</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Resources
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                                <li><a class="dropdown-item disabled fw-bold text-black" href="#">Books</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://store.coingecko.com/collections/frontpage/products/how-to-nft"
+                                        target="_blank">How To NFT</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://store.coingecko.com/collections/frontpage/products/how-to-bitcoin-book"
+                                        target="_blank">How To Bitcoin</a></li>
+                                <li><a class="dropdown-item"
+                                        href="https://store.coingecko.com/collections/frontpage/products/how-to-defi-advanced"
+                                        target="_blank">How To DeFi</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item disabled fw-bold text-black">In The News</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://landing.coingecko.com/newsletter/"
+                                        target="_blank">Lastest News</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Learn
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                                <li><a class="dropdown-item" href="#">Videos</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Newsletter</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="modal"
+                                data-bs-target="#aboutModal">
+                                About
+                            </a>
+                        </li>
+
+                        <!-- About Modal -->
+                        <div class="modal" id="aboutModal" tabindex="-1" aria-labelledby="aboutModal"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h5 class="modal-title w-100">About Tritorium</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <div class="row my-2 justify-content-md-center">
+                                            <div class="col-md-8 text-center">
+                                                <h3>MEET OUR TEAM</h3>
+                                                We are all very different. We were born in different cities, at
+                                                different times, we love different music, food, movies. But we have
+                                                something that unites us all. It is our company. We are its heart.
+                                                We are not just a team, we are Tritorium.
+                                            </div>
+                                        </div>
+                                        <div class="row row-cols-md-4 g-4 mt-4">
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="https://i.kym-cdn.com/photos/images/original/001/064/147/8ec.png"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">jackytank</h5>
+                                                        <p class="card-text">Co-founder</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0HN3OP7b_VuzHrSd_EsSsomUWEfEO4zhSgEuZOMZ8dtWHRNrHr0Er59QlqxJ-tngLMb0&usqp=CAU"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">balisongian</h5>
+                                                        <p class="card-text">Co-founder</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="https://i.pinimg.com/474x/18/80/47/1880473e0467db99daeb410e5f2c04b5.jpg"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">ssstackes</h5>
+                                                        <p class="card-text">Co-founder</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="https://i.pinimg.com/736x/b4/9e/a2/b49ea2393b824cba2715dd09c290363e.jpg"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">trinius</h5>
+                                                        <p class="card-text">CFO</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="https://i.pinimg.com/originals/7f/4c/41/7f4c41df66b3a2a6c784f1e284829320.jpg"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">trisus christ</h5>
+                                                        <p class="card-text">CTO</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqw1W949Uwe8lgE7UVPhM8mTCSZVaNCC_4Lucsp5xTRPVJ1DGdCIL-Xw6oZePqrculkN8&usqp=CAU"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">nakamoto</h5>
+                                                        <p class="card-text">Secretary</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="https://w7.pngwing.com/pngs/1021/316/png-transparent-pepe-the-frog-feeling-meme-amphibian-frog-animals-vertebrate-grass-thumbnail.png"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">satoshi</h5>
+                                                        <p class="card-text">Marketing Executive</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card text-center px-3 py-3"
+                                                    style="width: 12rem; height: 18rem;">
+                                                    <img src="http://cdn.shopify.com/s/files/1/0583/5341/8448/products/smugwojak_digital_art_x4square.jpg?v=1625844128"
+                                                        class="card-img-top img-thumbnail" alt="..."
+                                                        style="border-radius: 50%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Wojack</h5>
+                                                        <p class="card-text">Head of HR</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <!-- trigger login modal -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">Login</a>
+                        </li>
+                        <!-- trigger signup modal -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal"
+                                data-bs-target="#signupModal">Signup</a>
+                        </li>
+
+                        <!-- login modal -->
+                        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="" accept-charset="UTF-8">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                                <input type="email" class="form-control shadow-none"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                <input type="password" class="form-control shadow-none"
+                                                    id="exampleInputPassword1">
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <div class="row">
+                                                    <div class="col-sm">
+                                                        <input type="checkbox" class="form-check-input"
+                                                            id="loginCheck1">
+                                                        <label class="form-check-label" for="loginCheck1">Remember
+                                                            me</label>
+                                                    </div>
+                                                    <div class="col-sm text-sm-end">
+                                                        <a href="#" class="text-decoration-none" data-bs-toggle="modal"
+                                                            data-bs-target="#forgotModal">Forgot your
+                                                            password?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary p-2 mt-2">Login</button>
+                                            </div>
+                                        </form>
+                                        <div class="my-3">
+                                            <div class="form-text text-center text-black text-sm">
+                                                Don't have an account?
+                                                <a class="text-decoration-none" data-bs-toggle="modal"
+                                                    data-bs-target="#signupModal" href="#">Sign up</a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Signup modal -->
+                        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title" id="exampleModalLabel">Signup</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/sign_up" method="post" accept-charset="UTF-8" name="signupForm">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                                <input type="email" class="form-control shadow-none" id="emailSignup"
+                                                    name="emailSignup" required ng-model="emailSignup">
+                                                <span class="fst-italic text-danger"
+                                                    ng-show="signupForm.emailSignup.$invalid">
+                                                    Please enter email
+                                                </span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Fullname</label>
+                                                <input type="text" class="form-control shadow-none" id="fullnameSignup"
+                                                    name="fullnameSignup" required ng-model="fullnameSignup">
+                                                <span class="fst-italic text-danger"
+                                                    ng-show="signupForm.fullnameSignup.$invalid">
+                                                    Please enter fullname
+                                                </span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                <input type="password" class="form-control shadow-none"
+                                                    id="passwordSignup" name="passwordSignup" required
+                                                    ng-model="passwordSignup">
+                                                <span class="fst-italic text-danger"
+                                                    ng-show="signupForm.passwordSignup.$invalid">
+                                                    Please enter password
+                                                </span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Retype</label>
+                                                <input type="password" class="form-control shadow-none"
+                                                    id="retypeSignup" name="retypeSignup" ng-model="retypeSignup"
+                                                    required>
+                                                <span class="fst-italic text-danger"
+                                                    ng-show="signupForm.retypeSignup.$invalid">
+                                                    Please enter retype
+                                                </span>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <div class="row">
+                                                    <div class="col-sm">
+                                                        <input type="checkbox" class="form-check-input"
+                                                            id="exampleCheck1">
+                                                        <label class="form-check-label" for="exampleCheck1">
+                                                            I agree to Tritorium's <a class="text-decoration-none"
+                                                                href="">Terms
+                                                                of Service</a>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary p-2 mt-2" id="submitSignup"
+                                                    name="submitSignup">Signup</button>
+                                            </div>
+                                        </form>
+                                        <div class="my-3">
+                                            <div class="form-text text-center text-black text-sm">
+                                                Already have an account?
+                                                <a class="text-decoration-none" data-bs-toggle="modal"
+                                                    data-bs-target="#loginModal" href="#">Sign in</a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Forgotpassword modal -->
+                        <div class="modal fade" id="forgotModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title">Send me my password</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="" accept-charset="UTF-8">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                                <input type="email" class="form-control shadow-none" id="emailForgot"
+                                                    aria-describedby="emailForgot">
+                                            </div>
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary p-2 mt-2">Submit</button>
+                                            </div>
+                                        </form>
+                                        <div class="my-3">
+                                            <div class="form-text text-center text-black text-sm">
+                                                Back to
+                                                <a class="text-decoration-none" data-bs-toggle="modal"
+                                                    data-bs-target="#loginModal" href="#">Sign in</a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                    <form class="d-flex">
+                        <div class="input-group me-2">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" class="form-control shadow-none" placeholder="Search" aria-label="Search"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+
+</html>
