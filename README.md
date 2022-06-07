@@ -10,6 +10,15 @@
   - Coingecko Widget
   - ZaloSDK (Chatbox Widget)
   - AngularJS
+* Guide
+  - Run 
+```
+npm install
+``` 
+```
+npm start
+```
+  - Go to [localhost:3000/](http://localhost:3000/)
  
 * Demo images
 
