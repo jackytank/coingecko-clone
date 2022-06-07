@@ -1,6 +1,6 @@
 # Coingecko-clone
 
-* This is a fun project trying to mimic both Coinmarketcap and Coingecko, users can view crypto price, exchange info as well as sign up account to MongoDB Atlas, dark mode included
+* This is a fun project trying to mimic both Coinmarketcap and Coingecko using ejs as templace engine, bootstrap as css framework, fetchAPI to fetch cryto data from Coingecko, users can view crypto price, exchange info as well as sign up account to MongoDB Atlas, dark mode included
 
 * This app was built using:
   - Nodejs 16.15
